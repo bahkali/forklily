@@ -1,6 +1,11 @@
 import Search from "./modules/search.module";
 import * as searchView from "./views/search.view";
-import { elements, renderLoader, clearLoader } from "./views/base";
+import {
+  elements,
+  renderLoader,
+  clearLoader,
+  elementStrings,
+} from "./views/base";
 import { queryArray } from "./modules/search-query";
 /**
  * Global State of the app
@@ -9,6 +14,7 @@ import { queryArray } from "./modules/search-query";
  * - Liked recipes
  */
 const state = {};
+
 const controlSearch = async () => {
   //get query from UI
   const query = searchView.getInput();
@@ -20,13 +26,30 @@ const controlSearch = async () => {
     searchView.clearResults();
     renderLoader(elements.searchRes);
     //search for recipes
-    await state.search.getResult();
-    //render to UI
-    clearLoader();
-    searchView.renderResults(state.search.result);
+    try {
+      await state.search.getResult();
+      //render to UI
+      clearLoader();
+      searchView.renderResults(state.search.result);
+    } catch (error) {
+      alert("Something wrong with the search...");
+    }
   }
 };
+
 elements.searchForm.addEventListener("submit", (event) => {
   event.preventDefault(); // prevent reload
   controlSearch();
+});
+
+elements.searchResPages.addEventListener("click", (event) => {
+  const btn = event.target.closest(".btn-inline");
+
+  if (btn) {
+    const goToPage = parseInt(btn.dataset.goto, 10);
+    searchView.clearResults();
+    console.log(state.search);
+
+    searchView.renderResults(state.search.result, goToPage);
+  }
 });
