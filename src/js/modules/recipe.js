@@ -51,6 +51,7 @@ export default class Recipe {
       "cup",
       "pound",
     ];
+    const units = [...unitsShort, "kg", "g"];
     const newIngredients = this.ingredients.map((element) => {
       //uniform units
       let ingredient = element.toLowerCase();
@@ -62,7 +63,7 @@ export default class Recipe {
 
       const arrIng = ingredient.split(" ");
       const unitIndex = arrIng.findIndex((element2) =>
-        unitsShort.includes(element2)
+        units.includes(element2)
       );
 
       let objIng;
