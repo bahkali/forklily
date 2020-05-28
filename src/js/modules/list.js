@@ -12,7 +12,7 @@ export default class List {
       unit,
       ingredient,
     };
-    this.items.pushI(item);
+    this.items.push(item);
     return item;
   }
 
