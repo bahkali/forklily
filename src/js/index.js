@@ -4,6 +4,7 @@ import * as recipeView from "./views/recipe.view";
 import { elements, renderLoader, clearLoader } from "./views/base";
 
 import Recipe from "./modules/recipe";
+import List from "./modules/list";
 /**
  * Global State of the app
  * - Search object
@@ -51,7 +52,7 @@ elements.searchResPages.addEventListener("click", (e) => {
 //Recipe Controller
 const controlRecipe = async () => {
   const id = window.location.hash.replace("#", "");
-
+  console.log(id);
   if (id) {
     //prepare UI for changes
     recipeView.clearRecipe();
@@ -96,5 +97,6 @@ elements.recipe.addEventListener("click", (e) => {
     state.recipe.updateServings("inc");
     recipeView.updateServingsIngredients(state.recipe);
   }
-  console.log(state.recipe);
 });
+
+window.l = new List();
