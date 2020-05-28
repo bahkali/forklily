@@ -1,14 +1,8 @@
 import Search from "./modules/search.module";
 import * as searchView from "./views/search.view";
 import * as recipeView from "./views/recipe.view";
-import {
-  elements,
-  renderLoader,
-  renderResults,
-  clearLoader,
-  clearResults,
-} from "./views/base";
-import { queryArray } from "./modules/search-query";
+import { elements, renderLoader, clearLoader } from "./views/base";
+
 import Recipe from "./modules/recipe";
 /**
  * Global State of the app
@@ -32,27 +26,24 @@ const controlSearch = async () => {
     //search for recipes
     try {
       await state.search.getResult();
-      //render to UI
       clearLoader();
       searchView.renderResults(state.search.result);
     } catch (error) {
       alert("Something wrong with the search...");
+      clearLoader();
     }
   }
 };
-elements.searchForm.addEventListener("submit", (event) => {
-  event.preventDefault(); // prevent reload
+elements.searchForm.addEventListener("submit", (e) => {
+  e.preventDefault(); // prevent reload
   controlSearch();
 });
 
-elements.searchResPages.addEventListener("click", (event) => {
-  const btn = event.target.closest(".btn-inline");
-
+elements.searchResPages.addEventListener("click", (e) => {
+  const btn = e.target.closest(".btn-inline");
   if (btn) {
     const goToPage = parseInt(btn.dataset.goto, 10);
     searchView.clearResults();
-    console.log(state.search);
-
     searchView.renderResults(state.search.result, goToPage);
   }
 });
@@ -74,9 +65,11 @@ const controlRecipe = async () => {
       //get recipe data and parse ingredients
       await state.recipe.getRecipe();
       state.recipe.parseIngredients();
+
       //calculate serving and time
       state.recipe.calcTime();
       state.recipe.calcServings();
+
       //render recipe
       clearLoader();
       recipeView.renderRecipe(state.recipe);
@@ -86,9 +79,22 @@ const controlRecipe = async () => {
   }
 };
 
-// window.addEventListener("hashchange", controlRecipe);
-// window.addEventListener("load", controlRecipe);
-
 ["hashchange", "load"].forEach((event) =>
   window.addEventListener(event, controlRecipe)
 );
+
+//handling
+elements.recipe.addEventListener("click", (e) => {
+  if (e.target.matches(".btn-decrease, .btn-decrease *")) {
+    //decrease button click
+    if (state.recipe.servings > 1) {
+      state.recipe.updateServings("dec");
+      recipeView.updateServingsIngredients(state.recipe);
+    }
+  } else if (e.target.matches(".btn-increase, .btn-increase *")) {
+    //Increase button is click
+    state.recipe.updateServings("inc");
+    recipeView.updateServingsIngredients(state.recipe);
+  }
+  console.log(state.recipe);
+});
