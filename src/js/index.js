@@ -2,6 +2,7 @@ import Search from "./modules/search.module";
 import * as searchView from "./views/search.view";
 import * as recipeView from "./views/recipe.view";
 import * as listView from "./views/list.view";
+import * as likeView from "./views/likes.view";
 import { elements, renderLoader, clearLoader } from "./views/base";
 
 import Recipe from "./modules/recipe";
@@ -75,7 +76,7 @@ const controlRecipe = async () => {
 
       //render recipe
       clearLoader();
-      recipeView.renderRecipe(state.recipe);
+      recipeView.renderRecipe(state.recipe, state.likes.isLiked(id));
     } catch (error) {
       alert("error proccessing recipe");
     }
@@ -98,6 +99,10 @@ const controlList = () => {
   });
 };
 
+//testing
+state.likes = new Likes();
+likeView.toggleLikeMenu(state.likes.getNumLikes());
+
 //Like Controller
 const controlLike = () => {
   if (!state.likes) state.likes = new Likes();
@@ -112,15 +117,18 @@ const controlLike = () => {
       state.recipe.img
     );
     //Toggle the like button
+    likeView.toggleLikeBtn(true);
     //add like to UI List
-    console.log(state.likes);
+    likeView.renderLike(newLike);
   } else {
     //remove like from the state
     state.likes.deleteLike(currentID);
     //toggle the like button
+    likeView.toggleLikeBtn(false);
     //remove like to UI list
-    console.log(state.likes);
+    likeView.deleteLike(currentID);
   }
+  likeView.toggleLikeMenu(state.likes.getNumLikes());
 };
 
 //handle delete and update list item events

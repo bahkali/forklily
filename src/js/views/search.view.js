@@ -17,11 +17,11 @@ export const highlightSelected = (id) => {
     el.classList.remove("result__link--active");
   });
   document
-    .querySelector(`a[href="#${id}"]`)
+    .querySelector(`.results__link[href="#${id}"]`)
     .classList.add("result__link--active");
 };
 
-const limitRecipeTitle = (title, limit = 17) => {
+export const limitRecipeTitle = (title, limit = 17) => {
   const newTitle = [];
   if (title.length > limit) {
     title.split(" ").reduce((accumulator, current) => {
