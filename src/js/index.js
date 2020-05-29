@@ -6,6 +6,7 @@ import { elements, renderLoader, clearLoader } from "./views/base";
 
 import Recipe from "./modules/recipe";
 import List from "./modules/list";
+import Likes from "./modules/likes";
 /**
  * Global State of the app
  * - Search object
@@ -97,6 +98,31 @@ const controlList = () => {
   });
 };
 
+//Like Controller
+const controlLike = () => {
+  if (!state.likes) state.likes = new Likes();
+  const currentID = state.recipe.id;
+
+  if (!state.likes.isLiked(currentID)) {
+    //add like to the state
+    const newLike = state.likes.addLike(
+      currentID,
+      state.recipe.title,
+      state.recipe.author,
+      state.recipe.img
+    );
+    //Toggle the like button
+    //add like to UI List
+    console.log(state.likes);
+  } else {
+    //remove like from the state
+    state.likes.deleteLike(currentID);
+    //toggle the like button
+    //remove like to UI list
+    console.log(state.likes);
+  }
+};
+
 //handle delete and update list item events
 elements.shopping.addEventListener("click", (e) => {
   const id = e.target.closest(".shopping__item").dataset.itemid;
@@ -126,5 +152,7 @@ elements.recipe.addEventListener("click", (e) => {
     recipeView.updateServingsIngredients(state.recipe);
   } else if (e.target.matches(".recipe__btn--add, .recipe__btn--add *")) {
     controlList();
+  } else if (e.target.matches(".recipe__love, .recipe__love *")) {
+    controlLike();
   }
 });
