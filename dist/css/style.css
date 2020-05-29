@@ -24,17 +24,17 @@ body {
   font-weight: 400;
   line-height: 1.6;
   color: #655a56;
-  background-image: linear-gradient(to right bottom, #fbdb89, #f48982);
+  background-image: linear-gradient(to right bottom, #606c88, #3f4c6b);
   background-size: cover;
   background-repeat: no-repeat;
   min-height: calc(100vh - 2 * 4vw);
 }
 
 .container {
-  max-width: 120rem;
-  margin: 4vw auto;
+  max-width: 130rem;
+  margin: 0 auto;
   background-color: #fff;
-  border-radius: 6px;
+  border-radius: none;
   overflow: hidden;
   box-shadow: 0 2rem 6rem 0.5rem rgba(101, 90, 86, 0.2);
   display: grid;
@@ -54,7 +54,7 @@ body {
 .btn-small,
 .btn-small:link,
 .btn-small:visited {
-  background-image: linear-gradient(to right bottom, #fbdb89, #f48982);
+  background-image: linear-gradient(to right bottom, #606c88, #3f4c6b);
   border-radius: 10rem;
   border: none;
   text-transform: uppercase;
@@ -103,7 +103,7 @@ body {
 }
 
 .btn-inline {
-  color: #f59a83;
+  color: #3f4c6b;
   font-size: 1.2rem;
   border: none;
   background-color: #f9f5f3;
@@ -124,7 +124,7 @@ body {
   margin: 0 0.4rem;
 }
 .btn-inline:hover {
-  color: #f48982;
+  color: #3f4c6b;
   background-color: #f2efee;
 }
 .btn-inline:focus {
@@ -141,18 +141,18 @@ body {
 .btn-tiny svg {
   height: 100%;
   width: 100%;
-  fill: #f59a83;
+  fill: #3f4c6b;
   transition: all 0.3s;
 }
 .btn-tiny:focus {
   outline: none;
 }
 .btn-tiny:hover svg {
-  fill: #f48982;
+  fill: #3f4c6b;
   transform: translateY(-1px);
 }
 .btn-tiny:active svg {
-  fill: #f48982;
+  fill: #3f4c6b;
   transform: translateY(0);
 }
 .btn-tiny:not(:last-child) {
@@ -162,7 +162,7 @@ body {
 .heading-2 {
   font-size: 1.8rem;
   font-weight: 600;
-  color: #f59a83;
+  color: #3f4c6b;
   text-transform: uppercase;
   margin-bottom: 2.5rem;
   text-align: center;
@@ -187,7 +187,7 @@ body {
 .loader svg {
   height: 5.5rem;
   width: 5.5rem;
-  fill: #f59a83;
+  fill: #3f4c6b;
   transform-origin: 44% 50%;
   animation: rotate 1.5s infinite linear;
 }
@@ -263,7 +263,7 @@ body {
   opacity: 1;
 }
 .likes__icon {
-  fill: #f59a83;
+  fill: #3f4c6b;
   height: 3.75rem;
   width: 3.75rem;
 }
@@ -328,7 +328,7 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  background-image: linear-gradient(to right bottom, #fbdb89, #f48982);
+  background-image: linear-gradient(to right bottom, #606c88, #3f4c6b);
   opacity: 0.4;
 }
 .results__fig img,
@@ -342,7 +342,7 @@ body {
 .results__name,
 .likes__name {
   font-size: 1.3rem;
-  color: #f59a83;
+  color: #3f4c6b;
   text-transform: uppercase;
   font-weight: 600;
   margin-bottom: 0.3rem;
@@ -393,8 +393,8 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  background-image: linear-gradient(to right bottom, #fbdb89, #f48982);
-  opacity: 0.6;
+  background-image: linear-gradient(to right bottom, #606c88, #3f4c6b);
+  opacity: 0.35;
 }
 .recipe__img {
   width: 100%;
@@ -419,7 +419,7 @@ body {
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
   padding: 1.3rem 2rem;
-  background-image: linear-gradient(to right bottom, #fbdb89, #f48982);
+  background-image: linear-gradient(to right bottom, #606c88, #3f4c6b);
 }
 .recipe__details {
   display: flex;
@@ -438,7 +438,7 @@ body {
 .recipe__info-icon {
   height: 2rem;
   width: 2rem;
-  fill: #f59a83;
+  fill: #3f4c6b;
   margin-right: 1rem;
 }
 .recipe__info-data {
@@ -459,7 +459,7 @@ body {
   transform: translateY(0);
 }
 .recipe__love {
-  background-image: linear-gradient(to right bottom, #fbdb89, #f48982);
+  background-image: linear-gradient(to right bottom, #606c88, #3f4c6b);
   border-radius: 50%;
   border: none;
   cursor: pointer;
@@ -505,8 +505,8 @@ body {
 .recipe__icon {
   height: 1.8rem;
   width: 1.8rem;
-  fill: #f59a83;
-  border: 1px solid #f59a83;
+  fill: #3f4c6b;
+  border: 1px solid #3f4c6b;
   border-radius: 50%;
   padding: 2px;
   margin-right: 1rem;
