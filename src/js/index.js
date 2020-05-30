@@ -99,10 +99,6 @@ const controlList = () => {
   });
 };
 
-//testing
-state.likes = new Likes();
-likeView.toggleLikeMenu(state.likes.getNumLikes());
-
 //Like Controller
 const controlLike = () => {
   if (!state.likes) state.likes = new Likes();
@@ -130,6 +126,14 @@ const controlLike = () => {
   }
   likeView.toggleLikeMenu(state.likes.getNumLikes());
 };
+
+//restore liked on page load
+window.addEventListener("load", () => {
+  state.likes = new Likes();
+  state.likes.readStorage();
+  likeView.toggleLikeMenu(state.likes.getNumLikes());
+  state.likes.likes.forEach((like) => likeView.renderLike(like));
+});
 
 //handle delete and update list item events
 elements.shopping.addEventListener("click", (e) => {
