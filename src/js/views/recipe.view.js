@@ -5,7 +5,7 @@ var Fraction = require("fractional").Fraction;
 const formatCount = (count) => {
   if (count) {
     //count 2.5 ==> 2 1/2
-    const newCount = Math.round(count * 1000) / 1000;
+    const newCount = Math.round(count * 100000) / 100000;
     const [int, dec] = newCount
       .toString()
       .split(".")

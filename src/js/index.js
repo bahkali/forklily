@@ -15,7 +15,7 @@ import Likes from "./modules/likes";
  * - Liked recipesS
  */
 const state = {};
-window.state = state;
+
 const controlSearch = async () => {
   //get query from UI
   const query = searchView.getInput();
